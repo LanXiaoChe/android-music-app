@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.william.RDC.musicplayer"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "F.01"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        适配安卓Q
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "MusicPlayer_RDC.F.01.apk"
+        }
+    }
+
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0' // 更新为 1.2.0 版本
+    implementation 'androidx.palette:palette:1.0.0'
+
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation('androidx.annotation:annotation:1.2.0') { // 更新为 1.2.0 版本
+        force = true
+    }
+    implementation 'androidx.appcompat:appcompat:1.2.0' // 移除重复的依赖项
+    implementation 'com.google.android.material:material:1.4.0'
+}
+
